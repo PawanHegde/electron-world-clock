@@ -1,4 +1,4 @@
-let localTimeSpan = document.getElementById('local_time')
+let localTimeSpan = document.getElementById('local_time');
 
 function showCurrentTime() {
     localTimeSpan.innerHTML = new Date().toLocaleTimeString();
