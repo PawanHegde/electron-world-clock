@@ -3,7 +3,7 @@ const moment = require('moment-timezone')
 let localTimeSpan = document.getElementById('local_time');
 
 function getCurrentTime(moment, timezone) {
-    return moment().tz(timezone).toLocaleString();
+    return moment.tz(timezone).toLocaleString();
 }
 
 setInterval(function() {
