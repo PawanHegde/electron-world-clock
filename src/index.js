@@ -7,7 +7,7 @@ function getCurrentTime(moment, timezone) {
 }
 
 setInterval(function() {
-    timezone = moment.tz.guess()
+    let timezone = moment.tz.guess()
     let currentTime = getCurrentTime(moment, timezone);
     localTimeSpan.innerHTML = currentTime
 }, 0.1)

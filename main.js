@@ -7,7 +7,7 @@ function createWindow() {
         "height": 600
     }
     mainWindow = new BrowserWindow(windowOptions);
-    mainWindow.loadFile('./app/index.html');
+    mainWindow.loadURL('http://localhost:3000');
 }
 
 app.on('ready', createWindow)
