@@ -3,23 +3,42 @@
   "version": "0.0.1",
   "main": "electron_starter.js",
   "scripts": {
-    "start:react": "react-scripts start",
-    "start:electron": "electron .",
-    "start": "npm-run-all --parallel start:*",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "build": "babel src -d lib",
+    "start": "electron ."
   },
-  "private": true,
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "@babel/preset-env"
+          ]
+        }
+      ]
+    ]
+  },
+  "private": false,
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.51",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "babelify": "^9.0.0",
     "electron": "^2.0.2",
-    "npm-run-all": "^4.1.3",
-    "react-scripts": "1.1.4"
+    "npm-run-all": "^4.1.3"
   },
   "dependencies": {
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.17",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1"
-  }
+    "react-dom": "^16.4.1",
+    "react-interval": "^2.0.2"
+  },
+  "description": "Track time all over the world",
+  "repository": "https://github.com/PawanHegde/electron-world-clock.git",
+  "author": "Pawan Hegde <contact@pawanhegde.com>",
+  "license": "MIT"
 }

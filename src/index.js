@@ -1,13 +1,38 @@
-const moment = require('moment-timezone')
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import ReactInterval from 'react-interval';
+import { tz } from 'moment-timezone';
 
-let localTimeSpan = document.getElementById('local_time');
-
-function getCurrentTime(moment, timezone) {
-    return moment.tz(timezone).toLocaleString();
+function getCurrentTime(timezone) {
+    return tz(timezone).toLocaleString();
 }
 
-setInterval(function() {
-    let timezone = moment.tz.guess()
-    let currentTime = getCurrentTime(moment, timezone);
-    localTimeSpan.innerHTML = currentTime
-}, 0.1)
+class Clock extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            currentTime: null
+        };
+    }
+
+    render() {
+        return(
+            <span>
+                <ReactInterval
+                    timeout={1}
+                    enabled={true}
+                    callback={() => {this.setState({
+                        currentTime: getCurrentTime(this.props.timezone)
+                    })}}>
+                </ReactInterval>                
+                <span>{ this.state.currentTime }</span>
+            </span>
+        );
+    }
+}
+
+ReactDOM.render(
+    <div>Current time: <Clock timezone={tz.guess()}/></div>,
+    document.getElementById('root')
+);
