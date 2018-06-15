@@ -8,7 +8,7 @@ function createWindow() {
         "height": 600
     }
     mainWindow = new BrowserWindow(windowOptions);
-    mainWindow.loadURL('file://' + __dirname + '/index.html')
+    mainWindow.loadURL('file://' + __dirname + '/public/index.html')
 }
 
 app.on('ready', createWindow)

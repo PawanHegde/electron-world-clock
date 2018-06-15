@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "electron_starter.js",
   "scripts": {
-    "build": "babel src -d lib",
+    "build": "babel --compact --minified -D src -d public",
     "start": "electron ."
   },
   "private": false,
