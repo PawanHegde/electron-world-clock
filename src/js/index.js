@@ -7,6 +7,22 @@ function getCurrentTime(timezone) {
     return tz(timezone).toLocaleString();
 }
 
+class App extends Component {
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        const clocks = this.props.locations.map((location) => 
+            <Clock location={ location.display_name } timezone={ location.timezone }/>
+        );
+
+        return (
+            <p>{ clocks }</p>
+        )
+    }
+}
+
 class Clock extends Component {
     constructor(props) {
         super(props)
@@ -25,14 +41,30 @@ class Clock extends Component {
                     callback={() => {this.setState({
                         currentTime: getCurrentTime(this.props.timezone)
                     })}}>
-                </ReactInterval>                
-                <span>{ this.state.currentTime }</span>
+                </ReactInterval>        
+                <div>{ this.props.location }: { this.state.currentTime }</div>
             </span>
         );
     }
 }
 
 ReactDOM.render(
-    <div>Current time: <Clock timezone={tz.guess()}/></div>,
+    <App locations={ [
+        {
+            timezone: 'Asia/Kolkata',
+            name: 'Mumbai',
+            display_name: 'Bombay'
+        },
+        {
+            timezone: 'Asia/Dhaka',
+            name: 'Dhaka',
+            display_name: 'Dhaka'
+        },
+        {
+            timezone: 'Europe',
+            name: 'London',
+            display_name: 'Londonwa'
+        }
+    ] } />,
     document.getElementById('root')
 );
