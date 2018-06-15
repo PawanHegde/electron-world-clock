@@ -1,7 +1,7 @@
 {
   "name": "world-clock",
   "version": "0.0.1",
-  "main": "main.js",
+  "main": "electron_starter.js",
   "scripts": {
     "start:react": "react-scripts start",
     "start:electron": "electron .",
