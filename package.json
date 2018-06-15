@@ -4,7 +4,8 @@
   "main": "electron_starter.js",
   "scripts": {
     "build": "babel --compact --minified -D src -d public",
-    "start": "electron ."
+    "start": "electron .",
+    "test": "echo success"
   },
   "private": false,
   "devDependencies": {
