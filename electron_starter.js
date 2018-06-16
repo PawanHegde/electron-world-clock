@@ -9,6 +9,7 @@ function createWindow() {
     }
     mainWindow = new BrowserWindow(windowOptions);
     mainWindow.loadURL('file://' + __dirname + '/public/index.html')
+    mainWindow.toggleDevTools()
 }
 
 app.on('ready', createWindow)
