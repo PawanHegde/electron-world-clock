@@ -43,7 +43,7 @@ class App extends Component {
 
     render() {
         const clocks = this.props.locations.map((location) => 
-            <LocalisedClock location={ location.display_name } timezone={ location.timezone }/>
+            <LocalisedClock key={ location.name } location={ location.display_name } timezone={ location.timezone }/>
         );
 
         return (
