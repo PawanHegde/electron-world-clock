@@ -1,0 +1,9 @@
+.localisedClock {
+    margin: 20px;
+    width: fit-content;
+    float: left;
+}
+
+.location, .timezone, .clock{
+    text-align: center;
+}

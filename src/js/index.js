@@ -2,28 +2,13 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import ReactInterval from 'react-interval';
 import { tz } from 'moment-timezone';
+import Clock from 'react-clock/dist/entry.nostyle';
 
 function getCurrentTime(timezone) {
-    return tz(timezone).toLocaleString();
+    return tz(timezone).format('HH:mm:ss').toLocaleString();
 }
 
-class App extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        const clocks = this.props.locations.map((location) => 
-            <Clock location={ location.display_name } timezone={ location.timezone }/>
-        );
-
-        return (
-            <p>{ clocks }</p>
-        )
-    }
-}
-
-class Clock extends Component {
+class LocalisedClock extends Component {
     constructor(props) {
         super(props)
 
@@ -34,17 +19,36 @@ class Clock extends Component {
 
     render() {
         return(
-            <span>
+            <div className="localisedClock">
                 <ReactInterval
                     timeout={1}
                     enabled={true}
-                    callback={() => {this.setState({
+                    callback={ () => { this.setState({
                         currentTime: getCurrentTime(this.props.timezone)
-                    })}}>
+                    }) } }>
                 </ReactInterval>        
-                <div>{ this.props.location }: { this.state.currentTime }</div>
-            </span>
+                
+                <Clock className="clock" value={ this.state.currentTime }/>
+                <div className="location">{ this.props.location }</div>
+                <div className="timezone">({ this.props.timezone })</div>
+            </div>
         );
+    }
+}
+
+class App extends Component {
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        const clocks = this.props.locations.map((location) => 
+            <LocalisedClock location={ location.display_name } timezone={ location.timezone }/>
+        );
+
+        return (
+            [ clocks ]
+        )
     }
 }
 
@@ -61,9 +65,9 @@ ReactDOM.render(
             display_name: 'Dhaka'
         },
         {
-            timezone: 'Europe',
-            name: 'London',
-            display_name: 'Londonwa'
+            timezone: 'Europe/London',
+            name: 'Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch',
+            display_name: 'Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch'
         }
     ] } />,
     document.getElementById('root')
