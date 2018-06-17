@@ -42,12 +42,16 @@ class App extends Component {
     }
 
     render() {
+        const title = <h1 id="title">World Clock</h1>
         const clocks = this.props.locations.map((location) => 
             <LocalisedClock key={ location.name } location={ location.display_name } timezone={ location.timezone }/>
         );
 
         return (
-            [ clocks ]
+            <div>
+                { title }
+                { [ clocks ] }
+            </div>
         )
     }
 }
