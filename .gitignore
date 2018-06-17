@@ -1,6 +1,6 @@
 #directories
 node_modules
-public
+dist
 
 #Files
 .DS_Store
