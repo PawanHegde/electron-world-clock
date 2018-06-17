@@ -1,4 +1,3 @@
-require("babel-register");
 const { app, BrowserWindow } = require('electron');
 
 let mainWindow = null;
@@ -8,7 +7,7 @@ function createWindow() {
         "height": 600
     }
     mainWindow = new BrowserWindow(windowOptions);
-    mainWindow.loadURL('file://' + __dirname + '/public/index.html')
+    mainWindow.loadURL('file://' + __dirname + '/src/index.html')
     mainWindow.toggleDevTools()
 }
 
