@@ -1,9 +1,17 @@
+#title {
+    font-family: 'Bowlby One SC', cursive;
+    font-size: 3.5em;
+    text-align: center;
+}
+
 .localisedClock {
     margin: 20px;
-    width: fit-content;
+    width: 150px;
     float: left;
 }
 
 .location, .timezone, .clock{
     text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
