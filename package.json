@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "main": "electron_starter.js",
   "scripts": {
-    "build": "webpack -p",
+    "build:dev": "webpack",
+    "build:prod": "webpack -p",
     "start": "electron .",
     "test": "echo success"
   },
