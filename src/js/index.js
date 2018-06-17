@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import ReactInterval from 'react-interval';
 import { tz } from 'moment-timezone';
-import Clock from 'react-clock/dist/entry.nostyle';
+import Clock from 'react-clock';
 
 function getCurrentTime(timezone) {
     return tz(timezone).format('HH:mm:ss').toLocaleString();
