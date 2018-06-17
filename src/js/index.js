@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import ReactInterval from 'react-interval';
 import { tz } from 'moment-timezone';
 import Clock from 'react-clock';
+import '../css/style.css';
 
 function getCurrentTime(timezone) {
     return tz(timezone).format('HH:mm:ss').toLocaleString();
@@ -50,7 +51,7 @@ class App extends Component {
         return (
             <div>
                 { title }
-                { [ clocks ] }
+                <div id="clocks-container">{ [ clocks ] }</div>
             </div>
         )
     }

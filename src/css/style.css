@@ -4,13 +4,19 @@
     text-align: center;
 }
 
+#clocks-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .localisedClock {
     margin: 20px;
     width: 150px;
     float: left;
 }
 
-.location, .timezone, .clock{
+.location, .timezone, .clock .react-clock{
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
