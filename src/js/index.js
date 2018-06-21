@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import ReactInterval from 'react-interval';
 import { tz } from 'moment-timezone';
 import Clock from 'react-clock';
+import Downshift from 'downshift';
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 import '../css/style.css';
 
 function getCurrentTime(timezone) {
@@ -37,21 +40,83 @@ class LocalisedClock extends Component {
     }
 }
 
-class App extends Component {
+class LocAdder extends Component {
     constructor(props) {
         super(props)
     }
 
     render() {
-        const title = <h1 id="title">World Clock</h1>
+        return (
+            <Downshift
+                onChange={selection => alert(`You selected ${selection.value}`)}
+                itemToString={item => (item ? item.value : '')}/>
+        )
+    }
+}
+
+class App extends Component {
+    constructor(props) {
+        super(props)      
+    }
+
+    render() {
         const clocks = this.props.locations.map((location) => 
             <LocalisedClock key={ location.name } location={ location.display_name } timezone={ location.timezone }/>
         );
 
+        const items = [
+            {value: 'apple'},
+            {value: 'pear'},
+            {value: 'orange'},
+            {value: 'grape'},
+            {value: 'banana'},
+          ]  
+
         return (
             <div>
-                { title }
+                <h1 id="title">World Clock</h1>
                 <div id="clocks-container">{ [ clocks ] }</div>
+                <Downshift
+                    onChange={selection => alert(`You selected ${selection.value}`)}
+                    itemToString={item => (item ? item.value : '')}>
+                    {({
+                        getInputProps,
+                        getItemProps,
+                        getLabelProps,
+                        getMenuProps,
+                        isOpen,
+                        inputValue,
+                        highlightedIndex,
+                        selectedItem,
+                        }) => (
+                        <div>
+                            <label {...getLabelProps()}>Enter a fruit</label>
+                            <input {...getInputProps()} />
+                            <ul {...getMenuProps()}>
+                            {isOpen
+                                ? items
+                                    .filter(item => !inputValue || item.value.includes(inputValue))
+                                    .map((item, index) => (
+                                    <li
+                                        {...getItemProps({
+                                        key: item.value,
+                                        index,
+                                        item,
+                                        style: {
+                                            backgroundColor:
+                                            highlightedIndex === index ? 'lightgray' : 'white',
+                                            fontWeight: selectedItem === item ? 'bold' : 'normal',
+                                        },
+                                        })}
+                                    >
+                                        {item.value}
+                                    </li>
+                                    ))
+                                : null}
+                            </ul>
+                        </div>
+                        )}
+                    </Downshift>                    
             </div>
         )
     }
