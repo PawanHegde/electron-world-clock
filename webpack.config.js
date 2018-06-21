@@ -9,18 +9,29 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.less/,
+                use: [
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            javascriptEnabled: true
+                        }
+                    }
+                ]
+            },
+            {
                 test: /\.css$/,
                 use: [
-                    'style-loader',
-                    'css-loader'
+                    { loader: 'style-loader' },
+                    { loader: 'css-loader' }
                 ]
             },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: [{
-                    loader: 'babel-loader'
-                }]
+                use: [
+                    { loader: 'babel-loader' }
+                ]
             }
         ]
     }
