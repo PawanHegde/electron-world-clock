@@ -6,8 +6,17 @@
   "scripts": {
     "build:dev": "webpack",
     "build:prod": "webpack -p",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",    
     "start": "electron .",
     "test": "echo success"
+  },
+  "build": {
+    "appId": "com.pawanhegde.electron-world-clock",
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "files": ["**/*", "build/icon.png", "build/bundle.js"]
   },
   "private": false,
   "devDependencies": {
@@ -17,6 +26,7 @@
     "babel-loader": "^8.0.0-beta.3",
     "css-loader": "^0.28.11",
     "electron": "^2.0.2",
+    "electron-builder": "^20.15.1",    
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
     "style-loader": "^0.21.0",
