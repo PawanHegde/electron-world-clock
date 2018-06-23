@@ -1,5 +1,6 @@
 {
   "name": "world-clock",
+  "productName": "World Clock",
   "version": "0.0.1",
   "main": "electron_starter.js",
   "scripts": {
