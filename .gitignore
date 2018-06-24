@@ -4,5 +4,5 @@ dist
 
 #Files
 .DS_Store
-build/bundle.js
 world-clock-v*.tgz
+build/bundle.js
