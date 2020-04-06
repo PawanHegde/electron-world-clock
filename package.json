@@ -50,7 +50,7 @@
       "config:base"
     ],
     "automerge": true
-  }
+  },
   "description": "Track time all over the world",
   "repository": "https://github.com/PawanHegde/electron-world-clock.git",
   "author": "Pawan Hegde <contact@pawanhegde.com>",
