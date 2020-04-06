@@ -36,7 +36,7 @@
   "dependencies": {
     "@material-ui/core": "^1.2.3",
     "@material-ui/icons": "^1.1.0",
-    "downshift": "^2.0.6",
+    "downshift": "^5.0.0",
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.17",
     "prop-types": "^15.6.2",
