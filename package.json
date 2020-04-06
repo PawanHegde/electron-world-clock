@@ -45,6 +45,11 @@
     "react-dom": "^16.4.1",
     "react-interval": "^2.0.2"
   },
+  "renovate": {
+    "extends": [
+      "config:base"
+    ]
+  }
   "description": "Track time all over the world",
   "repository": "https://github.com/PawanHegde/electron-world-clock.git",
   "author": "Pawan Hegde <contact@pawanhegde.com>",
